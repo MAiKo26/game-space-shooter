@@ -38,6 +38,7 @@
             this.MoveBackTimer = new System.Windows.Forms.Timer(this.components);
             this.MyAmunitionTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.EnemyMoveTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +52,10 @@
             // Player
             // 
             this.Player.Image = ((System.Drawing.Image)(resources.GetObject("Player.Image")));
-            this.Player.Location = new System.Drawing.Point(258, 390);
+            this.Player.Location = new System.Drawing.Point(387, 600);
+            this.Player.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Player.Name = "Player";
-            this.Player.Size = new System.Drawing.Size(50, 50);
+            this.Player.Size = new System.Drawing.Size(75, 77);
             this.Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Player.TabIndex = 0;
             this.Player.TabStop = false;
@@ -84,17 +86,33 @@
             this.MyAmunitionTimer.Interval = 20;
             this.MyAmunitionTimer.Tick += new System.EventHandler(this.MyAmunitionTimer_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 77);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // EnemyMoveTimer
+            // 
+            this.EnemyMoveTimer.Enabled = true;
+            this.EnemyMoveTimer.Interval = 60;
+            this.EnemyMoveTimer.Tick += new System.EventHandler(this.EnemyMoveTimer_Tick);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.ClientSize = new System.Drawing.Size(867, 683);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(600, 500);
-            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(889, 739);
+            this.MinimumSize = new System.Drawing.Size(889, 739);
             this.Name = "Form1";
             this.Text = "Space Shooter";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -116,6 +134,7 @@
         private System.Windows.Forms.Timer MoveBackTimer;
         private System.Windows.Forms.Timer MyAmunitionTimer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer EnemyMoveTimer;
     }
 }
 
