@@ -22,6 +22,6 @@ Welcome to the Space Shooter game! This Windows Form game, developed in C#, chal
 
 ## How to Run
 
-1. Clone the repository: `git clone https://github.com/your-username/space-shooter.git`
+1. Clone the repository: `git clone https://github.com/MAiKo26/space-shooter.git`
 2. Open the `space-shooter` directory.
 3. Run the game by executing the compiled executable.
