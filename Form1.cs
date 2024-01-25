@@ -31,6 +31,13 @@ namespace space_shooter
 
         Random rnd;
 
+        int score;
+        int level;
+        int dificulity;
+        bool pause;
+        bool gameOver;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -41,11 +48,18 @@ namespace space_shooter
 
             rnd = new Random();
 
+            gameOver = false;
+            pause = false;
+
             backgroundSpeed = 4;
             playerSpeed = 2;
             enemySpeed = 3;
             enemyAmunitionSpeed = 5;
             amunitionsSpeed = 6;
+            dificulity = 9;
+
+            scoreLabel.Text = "00";
+            LevelLabel.Text = "00";
 
             stars = new PictureBox[10];
             amunitions = new PictureBox[4];
@@ -194,6 +208,8 @@ namespace space_shooter
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (!pause)
+            {
             if (e.KeyCode == Keys.Left)
             {
                 MoveLeftTimer.Start();
@@ -211,6 +227,8 @@ namespace space_shooter
                 MoveBackTimer.Start();
             }
 
+
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -219,6 +237,28 @@ namespace space_shooter
             MoveLeftTimer.Stop();
             MoveForwardTimer.Stop();
             MoveBackTimer.Stop();
+
+            if (e.KeyCode == Keys.Space)
+            {
+                if (!gameOver)
+                {
+                    if (pause)
+                    {
+                        StartTimers();
+                        LabelMain.Visible = false;
+                        gameMedia.controls.play();
+                        pause = false;
+                    }else
+                    {
+                        LabelMain.Location = new Point(this.Width / 2 - 120, 150);
+                        LabelMain.Text = "PAUSED";
+                        LabelMain.Visible = true;
+                        gameMedia.controls.pause();
+                        StopTimers();
+                        pause = true;
+                    }
+                }
+            }
 
         }
 
@@ -271,6 +311,27 @@ namespace space_shooter
         {
                 if ((amunitions[0].Bounds.IntersectsWith(enemies[i].Bounds)) || (amunitions[1].Bounds.IntersectsWith(enemies[i].Bounds)) || (amunitions[2].Bounds.IntersectsWith(enemies[i].Bounds))){
                     explosion.controls.play();
+                    score += 1;
+                    scoreLabel.Text = (score < 10) ? "0" + score.ToString() : score.ToString();
+
+                    if (score %30 == 0)
+                    {
+                        level += 1;
+                        LevelLabel.Text = (level < 10) ? "0" + level.ToString() : level.ToString();
+
+                        if (enemySpeed <=10 && enemyAmunitionSpeed <= 10 && dificulity >= 0)
+                        {
+                            dificulity--;
+                            enemySpeed++;
+                            enemyAmunitionSpeed++;
+                        }
+                        if (level == 10)
+                        {
+                            GameOver("YOU WIN !");
+                        }
+                    }
+
+
                     enemies[i].Location = new Point((i + 1) * 50, -100);
                 }
                 if (Player.Bounds.IntersectsWith(enemies[i].Bounds))
@@ -278,12 +339,17 @@ namespace space_shooter
                     explosion.settings.volume = 30;
                     explosion.controls.play();
                     Player.Visible = false;
-                    GameOver("");
+                    GameOver("Game Over !");
                 }
         }
     }
         private void GameOver(String str)
         {
+            LabelMain.Text = str;
+            LabelMain.Location = new Point(120, 120);
+            LabelMain.Visible = true;
+            ReplayBtn.Visible = true;
+            Exit.Visible = true;
             gameMedia.controls.stop();
             StopTimers();
 
@@ -309,7 +375,7 @@ namespace space_shooter
 
         private void EnemyAmunitionTimer_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < enemyAmunitions.Length; i++)
+            for (int i = 0; i < enemyAmunitions.Length - dificulity; i++)
             {
                 if (enemyAmunitions[i].Top < this.Height)
                 {
@@ -336,10 +402,27 @@ namespace space_shooter
                     explosion.settings.volume = 30; // Change the volum
                     explosion.controls.play();
                     Player.Visible = false;
-                    GameOver("gg Game Over");
+                    GameOver("Game Over");
                 
                 }
             }
+        }
+
+        private void LabelMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReplayBtn_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+            Form1_Load(e,e);
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
 

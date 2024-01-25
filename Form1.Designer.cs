@@ -40,6 +40,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EnemyMoveTimer = new System.Windows.Forms.Timer(this.components);
             this.EnemyAmunitionTimer = new System.Windows.Forms.Timer(this.components);
+            this.ReplayBtn = new System.Windows.Forms.Button();
+            this.Exit = new System.Windows.Forms.Button();
+            this.LabelMain = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
+            this.LevelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +93,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
@@ -106,12 +111,75 @@
             this.EnemyAmunitionTimer.Interval = 40;
             this.EnemyAmunitionTimer.Tick += new System.EventHandler(this.EnemyAmunitionTimer_Tick);
             // 
+            // ReplayBtn
+            // 
+            this.ReplayBtn.Location = new System.Drawing.Point(179, 166);
+            this.ReplayBtn.Name = "ReplayBtn";
+            this.ReplayBtn.Size = new System.Drawing.Size(201, 73);
+            this.ReplayBtn.TabIndex = 1;
+            this.ReplayBtn.Text = "Replay";
+            this.ReplayBtn.UseVisualStyleBackColor = true;
+            this.ReplayBtn.Visible = false;
+            this.ReplayBtn.Click += new System.EventHandler(this.ReplayBtn_Click);
+            // 
+            // Exit
+            // 
+            this.Exit.Location = new System.Drawing.Point(179, 245);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(201, 73);
+            this.Exit.TabIndex = 2;
+            this.Exit.Text = "Exit";
+            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Visible = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // LabelMain
+            // 
+            this.LabelMain.AutoSize = true;
+            this.LabelMain.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelMain.ForeColor = System.Drawing.Color.Snow;
+            this.LabelMain.Location = new System.Drawing.Point(151, 94);
+            this.LabelMain.Name = "LabelMain";
+            this.LabelMain.Size = new System.Drawing.Size(270, 48);
+            this.LabelMain.TabIndex = 3;
+            this.LabelMain.Text = "Space Shooter";
+            this.LabelMain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LabelMain.Visible = false;
+            this.LabelMain.Click += new System.EventHandler(this.LabelMain_Click);
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.scoreLabel.Location = new System.Drawing.Point(520, 9);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(50, 19);
+            this.scoreLabel.TabIndex = 4;
+            this.scoreLabel.Text = "label1";
+            // 
+            // LevelLabel
+            // 
+            this.LevelLabel.AutoSize = true;
+            this.LevelLabel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LevelLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LevelLabel.Location = new System.Drawing.Point(12, 9);
+            this.LevelLabel.Name = "LevelLabel";
+            this.LevelLabel.Size = new System.Drawing.Size(50, 19);
+            this.LevelLabel.TabIndex = 5;
+            this.LevelLabel.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(582, 455);
+            this.Controls.Add(this.LevelLabel);
+            this.Controls.Add(this.scoreLabel);
+            this.Controls.Add(this.LabelMain);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.ReplayBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -125,6 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -140,6 +209,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer EnemyMoveTimer;
         private System.Windows.Forms.Timer EnemyAmunitionTimer;
+        private System.Windows.Forms.Button ReplayBtn;
+        private System.Windows.Forms.Button Exit;
+        private System.Windows.Forms.Label LabelMain;
+        private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label LevelLabel;
     }
 }
 
